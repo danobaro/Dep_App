@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Depression Severity Prediction</title>
+    <link href="{{ url_for('static', filename='css/tailwind-output.css') }}" rel="stylesheet">
+</head>
+<body class="bg-gray-100 flex flex-col min-h-screen">
+    <header class="bg-purple-700 text-white text-center py-4 shadow-md">
+        <h1 class="text-xl font-bold">Depression Severity Prediction</h1>
+    </header>
+    <main class="flex-1 mx-auto max-w-4xl w-full bg-white rounded-lg shadow-md mt-6 p-6">
+        <form action="/predict" method="post">
+            <h2 class="text-lg font-semibold mb-4">Enter Symptoms</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                {% for symptom in ["Sleep", "Appetite", "Interest", "Fatigue", "Worthlessness", "Concentration", "Agitation", 
+                                   "Suicidal_Ideation", "Sleep_Disturbance", "Aggression", "Panic_Attacks", 
+                                   "Hopelessness", "Restlessness", "Low_Energy"] %}
+                <div>
+                    <label for="{{ symptom }}" class="block text-sm font-medium text-gray-700">{{ symptom }}</label>
+                    <input type="number" id="{{ symptom }}" name="{{ symptom }}" step="1" required min="1" max="6"
+                           class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-purple-500 focus:border-purple-500">
+                </div>
+                {% endfor %}
+            </div>
+            <button type="submit" class="w-full bg-purple-700 text-white py-2 px-4 rounded-lg hover:bg-purple-800 mt-4">
+                Predict
+            </button>
+        </form>
+    </main>
+    <footer class="bg-purple-700 text-white text-center py-2">
+        <p class="text-sm">&copy; 2024 Depression Severity Analyzer</p>
+    </footer>
+</body>
+</html>

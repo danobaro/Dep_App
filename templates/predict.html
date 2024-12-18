@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Results</title>
+    <link href="{{ url_for('static', filename='css/tailwind-output.css') }}" rel="stylesheet">
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col">
+    <header class="bg-purple-700 text-white py-4 shadow-md">
+        <h1 class="text-center text-xl font-bold">Prediction Results</h1>
+    </header>
+    <main class="container mx-auto p-6 bg-white mt-6 rounded-lg shadow-lg max-w-4xl">
+        {% if error %}
+            <p class="text-red-500 text-lg font-semibold">{{ error }}</p>
+        {% else %}
+            <h2 class="text-lg font-semibold text-purple-700 mb-4">Prediction Results:</h2>
+            <table class="table-auto w-full border-collapse border border-gray-300">
+                <thead>
+                    <tr class="bg-gray-200">
+                        <th class="border border-gray-300 px-4 py-2">Model</th>
+                        <th class="border border-gray-300 px-4 py-2">Prediction</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for model, prediction in results.items() %}
+                    <tr>
+                        <td class="border border-gray-300 px-4 py-2">Prediction</td>
+                        <td class="border border-gray-300 px-4 py-2">{{ prediction }}</td>
+                    </tr>
+                    {% endfor %}
+                    <tr>
+                        <td class="border border-gray-300 px-4 py-2">Accuracy</td>
+                        <td class="border border-gray-300 px-4 py-2">0.9121</td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-300 px-4 py-2">F1 Score</td>
+                        <td class="border border-gray-300 px-4 py-2">0.9254</td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-300 px-4 py-2">Precision</td>
+                        <td class="border border-gray-300 px-4 py-2">0.9390</td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-300 px-4 py-2">Recall</td>
+                        <td class="border border-gray-300 px-4 py-2">0.9121</td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-300 px-4 py-2">MAE</td>
+                        <td class="border border-gray-300 px-4 py-2">0.9121</td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-300 px-4 py-2">MSE</td>
+                        <td class="border border-gray-300 px-4 py-2">1.1626</td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-300 px-4 py-2">RMSE</td>
+                        <td class="border border-gray-300 px-4 py-2">1.0825</td>
+                    </tr>
+                </tbody>
+            </table>
+        {% endif %}
+    </main>
+    <footer class="bg-purple-700 text-white py-4 text-center">
+        <p class="text-sm">&copy; 2024 Depression Severity Analyzer</p>
+    </footer>
+</body>
+</html>

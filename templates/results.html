@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Results</title>
+</head>
+<body>
+    <h1>Prediction Results</h1>
+    {% for model, metrics in results.items() %}
+    <h2>{{ model }}</h2>
+    <ul>
+        <li><strong>Prediction:</strong> {{ metrics.Prediction }}</li>
+        <li><strong>MSE:</strong> {{ metrics.MSE }}</li>
+        <li><strong>RMSE:</strong> {{ metrics.RMSE }}</li>
+        <li><strong>MAE:</strong> {{ metrics.MAE }}</li>
+        <li><strong>MAPE:</strong> {{ metrics.MAPE }}</li>
+        <li><strong>R2:</strong> {{ metrics.R2 }}</li>
+        <li><strong>Accuracy:</strong> {{ metrics.Accuracy }}</li>
+        <li><strong>Precision:</strong> {{ metrics.Precision }}</li>
+        <li><strong>Recall:</strong> {{ metrics.Recall }}</li>
+        <li><strong>F1 Score:</strong> {{ metrics.F1_Score }}</li>
+        <li><strong>Specificity:</strong> {{ metrics.Specificity }}</li>
+        <li><strong>Sensitivity:</strong> {{ metrics.Sensitivity }}</li>
+        <li><strong>PPV:</strong> {{ metrics.PPV }}</li>
+        <li><strong>NPV:</strong> {{ metrics.NPV }}</li>
+        <li><strong>FPR:</strong> {{ metrics.FPR }}</li>
+        <li><strong>FNR:</strong> {{ metrics.FNR }}</li>
+        <li><strong>CSI:</strong> {{ metrics.CSI }}</li>
+        <li><strong>Confusion Matrix:</strong> {{ metrics.Confusion_Matrix }}</li>
+    </ul>
+    {% endfor %}
+</body>
+</html>
